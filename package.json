@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "name": "week3-auth-linnk",
+  "description": "\"Share secrets\"",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "DB_FILE=db.sqlite nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fac26/week3-auth-linnk.git"
+  },
+  "author": "Laura, Iman, Niete, Natalia, Konstantina",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fac26/week3-auth-linnk/issues"
+  },
+  "homepage": "https://github.com/fac26/week3-auth-linnk#readme",
+  "devDependencies": {
+    "eslint": "^8.33.0",
+    "nodemon": "^2.0.20",
+    "prettier": "2.8.3"
+  }
+}
