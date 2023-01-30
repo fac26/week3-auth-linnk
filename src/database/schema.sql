@@ -1,5 +1,4 @@
 
-PRAGMA foreign_keys = ON;
 
 BEGIN;
 
@@ -28,7 +27,7 @@ CREATE TABLE IF NOT EXISTS secrets (
 CREATE TABLE IF NOT EXISTS companies(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL
-)
+);
 
 
 COMMIT;

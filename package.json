@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "better-sqlite3": "^8.0.1",
     "express": "^4.18.2"
   },
   "name": "week3-auth-linnk",
@@ -28,5 +29,5 @@
   },
   "volta": {
     "node": "18.13.0"
- }
+  }
 }
