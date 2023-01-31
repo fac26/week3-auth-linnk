@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS secrets (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   content TEXT,
   user_id INTEGER REFERENCES users(id),
-  company_id INTEGER REFERENCES conpanies(id),
+  company_id INTEGER REFERENCES companies(id),
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
