@@ -10,9 +10,34 @@
 
 //post req
 
-//import html
+const html = require('../templates/html');
 
 //implement and check here for cookie here, and if yes!
 // if yes const signed = true, pass it to html template
 
 //html('Secrets',signed , secrets)
+
+function getHomePage(req, res) {
+    const title = 'Corporategirl secrets';
+    const nav = navBar(req.session);
+    const content = 'all secrets';
+    const homePage = html(title, nav, content);
+    res.send(homePage);
+}
+function deleteSecret(req, res) {
+    //listen if the delete button clicked
+}
+
+function navBar(session) {
+    return /*html*/ `<ul>
+    <li><a href='/'>Home</a><div>
+    <div>
+        ${
+            session
+                ? /*html*/ `<li><a href="/add-secret">Add new secret</a></li><li><form method="POST" action="/log-out"><button class="Button">Log out</button></form></li>`
+                : /*html*/ `<li><a href="/sign-up">Sign up</a> or <a href="/log-in">log in</a></li>`
+        }
+    </div>
+    </ul>`;
+}
+module.exports = { getHomePage, deleteSecret };
