@@ -33,7 +33,7 @@ Stretch goal:
 - [ ] As an impatient user, I want to be able to read about a specific company using a drop down box.
 
 ## UX/UI
- This is how we envisioned Corporategirl would look when the user is logged in and can enjoy the full capabilities and here
+This ![Logged in mockup](fac26/week3-auth-linnk/public/Logged In version.odg) is how we envisioned Corporategirl would look when the user is logged in and can enjoy the full capabilities and here
 is how we evisioned it would look when the user has not yet signed up or logged in. 
 
 ## Schema
