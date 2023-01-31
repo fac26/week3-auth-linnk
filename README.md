@@ -2,7 +2,7 @@
 
 # Laura-Iman-Niete-Natalia-Konstantina-Authentication
 
-A website named "Corporategirl" where you can read secrets about companies - inspired by gossipgirl, fishbowl and glassdoor. A user can create an account or sign-in to post and delete a secret they know about the company. For example, an employee at facebook could leak that Mark Zuckerberg didn't actually think of Facebook himself, he actually discussed the idea with the Wisconsin brothers (watch the social network). 
+A website named "Corporategirl" where you can read secrets about companies - inspired by gossipgirl, fishbowl and glassdoor. A user can create an account or sign-in to post and delete a secret they know about the company. For example, an employee at facebook could leak that Mark Zuckerberg didn't actually think of Facebook himself, he actually discussed the idea with the Wisconsin brothers (according to the social network). 
 
 ## Setup
 
@@ -31,6 +31,10 @@ This uses the nodemon library to auto-restart the server when you save changes.
 
 Stretch goal: 
 - [ ] As an impatient user, I want to be able to read about a specific company using a drop down box.
+
+## UX/UI
+ This is how we envisioned Corporategirl would look when the user is logged in and can enjoy the full capabilities and here
+is how we evisioned it would look when the user has not yet signed up or logged in. 
 
 ## Schema
 
