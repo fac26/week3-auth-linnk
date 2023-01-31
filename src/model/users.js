@@ -21,10 +21,3 @@ function getUserByEmail(email) {
 }
 
 module.exports = { createUser, getUserByEmail };
-
-
-const sql = 'DELETE FROM secrets WHERE id = ?';
-
-db.run (sql, 1, function (err) {
-    if (err) return console.error(err.message);
-})
