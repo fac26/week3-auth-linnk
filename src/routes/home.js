@@ -1,20 +1,22 @@
-//get req
-//check if user has already signed-in links => log-out / add-new-secret
-//check if user not signed-in links => sign-up/sign-in
-
-//display all secrets
-
 // if a user signed-in display his secrets with delete-btn, here we should also call function from model/sessions.js which returns user-id
 //we expect to get a list of user secrets ids from model/secrets
 //map through select-all-secrets and if id === user secrets ids we should add detele-btn
 
 //post req
 
-//import html
+const { html, navBar } = require('../templates/html');
 
-//implement and check here for cookie here, and if yes!
-// if yes const signed = true, pass it to html template
+function getHomePage(req, res) {
+    const title = 'Corporategirl secrets';
+    const nav = navBar(req.session); //we pass on session data
+    const content = `<div>'all secrets'<div>`;
+    const homePage = html(title, nav, content);
+    res.send(homePage);
+}
+function deleteSecret(req, res) {
+    const session = req.session;
 
-//html('Secrets',signed , secrets)
+    //listen if the delete button clicked
+}
 
-//natalia
+module.exports = { getHomePage, deleteSecret };
