@@ -1,10 +1,17 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
 
 const server = express();
-server.get('/', (req, res) => {
-    //html page
-    res.send(' <h1>Welcome to our project</h1>');
-});
+const cookies = cookieParser();
+
+const { getHomePage, deleteSecret } = require('./routes/home');
+const { getSession, removeSession } = require('./model/sessions'); //getSession(sid), removeSession(sid);
+
+server.use(cookies); //pass cookieParser to all reoutes with req object
+server.use(sessions); //calls next inside session()
+
+server.get('/', getHomePage);
+server.post('/', deleteSecret);
 // add sign-up callback function
 //server.get('/sign-up', signUp_callback); //html page
 
@@ -20,5 +27,21 @@ server.get('/', (req, res) => {
 
 // delete
 //server.post('/delete-secret', delete_callback); //delete_callback should listen to req and in model folder in file should delete post from db
+
+function sessions(req, res, next) {
+    const sid = req.signedCookies.sid;
+    const session = getSession(sid);
+    if (session) {
+        const expiry = new Date(session.expires_at);
+        const today = new Date();
+        if (expiry < today) {
+            removeSession(sid);
+            res.clearCookie('sid');
+        } else {
+            req.session = session;
+        }
+    }
+    next();
+}
 
 module.exports = server;

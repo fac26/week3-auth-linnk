@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "better-sqlite3": "^8.0.1",
+    "cookie-parser": "^1.4.6",
     "express": "^4.18.2"
   },
   "name": "week3-auth-linnk",

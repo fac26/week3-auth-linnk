@@ -1,8 +1,4 @@
-//html
-//nav bar which holds home-link, (logout/add)||(login/signin)
-//${title} for h1, home-link: '/', signed-in: true|false} and ${content}=>secrets,forms
-
-function html({ title, nav, content }) {
+function html(title, nav, content) {
     return /*html*/ `
   <!doctype html>
   <html lang="en">
@@ -25,5 +21,18 @@ function html({ title, nav, content }) {
   </html>
 `;
 }
+function navBar(session) {
+    console.log(session);
+    return /*html*/ `<ul>
+    <li><a href='/'>Home</a><div>
+    <div>
+        ${
+            session
+                ? /*html*/ `<li><a href="/add-secret">Add new secret</a></li><li><form method="POST" action="/log-out"><button class="Button">Log out</button></form></li>`
+                : /*html*/ `<li><a href="/sign-up">Sign up</a> or <a href="/log-in">log in</a></li>`
+        }
+    </div>
+    </ul>`;
+}
 
-module.exports = { html };
+module.exports = { html, navBar };
