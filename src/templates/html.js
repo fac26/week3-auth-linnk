@@ -2,7 +2,7 @@
 //nav bar which holds home-link, (logout/add)||(login/signin)
 //${title} for h1, home-link: '/', signed-in: true|false} and ${content}=>secrets,forms
 
-function html({ title, homeLink, signedIn, content }) {
+function html({ title, nav, content }) {
     return /*html*/ `
   <!doctype html>
   <html lang="en">
@@ -14,14 +14,7 @@ function html({ title, homeLink, signedIn, content }) {
     <body>
     <header>
     <nav role="navigation" class="nav-bar">
-    <a href="${homeLink}">Home</a>
-      <ul class="nav-links">
-      ${
-          signedIn
-              ? /*html*/ `<a href="/add-secret">Add Secret</a> <form method="POST" action="/log-out"><button class="Button">Log out</button></form>`
-              : /*html*/ `<a href="/sign-up">Sign up</a> or <a href="/log-in">log in</a>`
-      }
-      </ul>
+      ${nav}
     </nav>
   </header>
         <main>
