@@ -45,8 +45,6 @@ This ![Logged in mockup](https://github.com/fac26/week3-auth-linnk/blob/main/pub
   <summary>Schema Code</summary>
 
 ```js
-PRAGMA foreign_keys = ON;
-
 BEGIN;
 
 CREATE TABLE IF NOT EXISTS users (
@@ -65,9 +63,16 @@ CREATE TABLE IF NOT EXISTS sessions (
 
 CREATE TABLE IF NOT EXISTS secrets (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
+  title TEXT,
   content TEXT,
   user_id INTEGER REFERENCES users(id),
+  company_id INTEGER REFERENCES companies(id),
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS companies(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL
 );
 
 COMMIT;
