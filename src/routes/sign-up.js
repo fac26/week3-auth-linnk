@@ -27,6 +27,7 @@ function postSignUp(req, res) {
         bcrypt
             .hash(password, 12)
             .then((hash) => {
+                email = sanitize(email);
                 const user = createUser(email, hash);
                 const session_id = createSession(user.id); //returns session id
                 res.cookie('sid', session_id, {
@@ -45,6 +46,10 @@ function postSignUp(req, res) {
                 )
             );
     }
+}
+
+function sanitize(input) {
+    return input.replace(/</g, '&lt;');
 }
 
 module.exports = { getSignUp, postSignUp };
