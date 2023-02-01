@@ -4,6 +4,8 @@
 
 A website named "Corporategirl" where you can read secrets about companies - inspired by gossipgirl, fishbowl and glassdoor. A user can create an account or sign-in to post and delete a secret they know about the company. For example, an employee at facebook could leak that Mark Zuckerberg didn't actually think of Facebook himself, he actually discussed the idea with the Wisconsin brothers (according to the social network).
 
+**PLEASE NOTE: The add secret and delete functions do not currently work...We're working on it!**
+
 ## Setup
 
 Make sure you have Git and Node (v18) installed.
@@ -20,14 +22,14 @@ This uses the nodemon library to auto-restart the server when you save changes.
 
 ## Testing
 
-:construction:
+**We currently have no tests written**
 
 ## User stories
 
 ### Core
 
 -   [x] As an invested user I want to create an account that I can sign in with, to add and read secrets about different companies.
--   [x] As a cheeky user I want to post a secret about a company, and be able to delete it if I am the same logged in user.
+-   [ ] As a cheeky user I want to post a secret about a company, and be able to delete it if I am the same logged in user.
 -   [x] As a curious user I want to see other people's secrets.
 
 Stretch goal:
@@ -80,8 +82,6 @@ COMMIT;
 ```
 
 </details>
-
----
 
 ---
 
