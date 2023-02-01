@@ -11,7 +11,7 @@ const { html, navBar } = require('../templates/html');
 function getSignin (request,response){
     const title = 'Sign in';
     const nav = navBar(request.session);
-    const content = userCredentialsForm();
+    const content = userCredentialsForm('/sign-in');
     const signInPage = html(title,nav,content);
     response.send(signInPage)
 }
