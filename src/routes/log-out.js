@@ -5,9 +5,9 @@
 const { removeSession } = require("../model/sessions");
 
 function postLogOut(req, res) {
-    const sessionID = req.signedCookies.sessionID;
+    const sessionID = req.signedCookies.sid;
     removeSession(sessionID);
-    res.clearCookie("sessionID");
+    res.clearCookie("sid");
     res.redirect("/");
 }
 
