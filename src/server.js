@@ -8,6 +8,7 @@ const cookies = cookieParser(); //process.env.COOKIE_SECRET
 const { getHomePage, deleteSecret } = require('./routes/home');
 const { getSession, removeSession } = require('./model/sessions'); //getSession(sid), removeSession(sid);
 const { getSignUp, postSignUp } = require('./routes/sign-up');
+const { postLogOut } = require('./routes/log-out')
 
 server.use(cookies); //pass cookieParser to all reoutes with req object
 server.use(sessions); //calls next inside session()
@@ -23,7 +24,7 @@ server.post('/sign-up', bodyParser, postSignUp);
 //server.get('/sign-in', signUIn_callback); //html page
 
 // add log-out callback function
-//server.post('/log-out', logOut_callback);
+server.post('/log-out', postLogOut);
 
 // add secret //if not signed-in this route shouldn't be allowed to see !!!
 //server.get('/add-secret', add_callback);  //html page with form to add new secret

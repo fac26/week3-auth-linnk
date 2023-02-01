@@ -16,4 +16,3 @@ function addCompanyToDB(companyname) {
 
 module.exports = {addCompanyToDB}
 
-//iman
