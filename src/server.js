@@ -3,7 +3,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = express.urlencoded({ extended: false });
 
 const server = express();
-const cookies = cookieParser(); //process.env.COOKIE_SECRET
+const cookies = cookieParser(process.env.COOKIE_SECRET); //process.env.COOKIE_SECRET
 
 const { getHomePage, deleteSecret } = require('./routes/home');
 const { getSession, removeSession } = require('./model/sessions'); //getSession(sid), removeSession(sid);
@@ -36,8 +36,8 @@ server.post('/log-out', postLogOut);
 //server.post('/delete-secret', delete_callback); //delete_callback should listen to req and in model folder in file should delete post from db
 
 function sessions(req, res, next) {
-    const sid = req.signedCookies.sid;
-    const session = getSession(sid);
+    const sid = req.signedCookies.sid; //undefined if there is not a sid
+    const session = getSession(sid); //undefined if there is no session
     if (session) {
         const expiry = new Date(session.expires_at);
         const today = new Date();

@@ -17,8 +17,7 @@ function getHomePage(req, res) {
     res.send(homePage);
 }
 function deleteSecret(req, res) {
-    const session = req.session;
-
+    // const session = req.session;
     //listen if the delete button clicked
 }
 
