@@ -6,7 +6,7 @@ function userCredentialsForm(path,errors = {}, values = {}) {
             <label for="email">email</label>
             <input type="email" id="email" name="email" required
             value="${values.email ? sanitize(values.email) : ""}">
-                 ${validation(errors.email)}>
+                 ${validation(errors.email)}
           </div>
           <div class="form-div">
             <label for="password">password</label>

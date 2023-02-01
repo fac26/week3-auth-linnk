@@ -2,6 +2,8 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const bodyParser = express.urlencoded({ extended: false });
 
+//server handles requests to style.css and responds with the file contents
+
 const server = express();
 const cookies = cookieParser(process.env.COOKIE_SECRET); //process.env.COOKIE_SECRET
 
@@ -11,6 +13,10 @@ const { getSignUp, postSignUp } = require('./routes/sign-up');
 const { getSignin, postSignin } = require('./routes/sign-in');
 const { postLogOut } = require('./routes/log-out')
 
+
+const staticHandler = express.static("public");
+
+server.use(staticHandler);
 server.use(cookies); //pass cookieParser to all reoutes with req object
 server.use(sessions); //calls next inside session()
 
