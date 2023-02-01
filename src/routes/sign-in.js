@@ -18,7 +18,7 @@ function getSignin (request,response){
 
 function postSignin (request,response){
     const {email, password} = request.body;
-    const user = getUserByEmail(email);
+    const user = getUserByEmail(email);//{id.hash..}
     if (!user || !email || !password) {
         return response.status(400).send("<h1>Login Failed</h1>");
     }
@@ -29,7 +29,7 @@ function postSignin (request,response){
             const session_id = createSession(user.id);
         response.cookie("sid", session_id, {
             signed:true,
-            maxAge:-10,
+            maxAge: 1000*60*60*24*3,
             sameSite: "lax",
             httpOnly: true,
         });
