@@ -1,5 +1,6 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
+const bodyParser = express.urlencoded({ extended: false });
 
 const server = express();
 const cookies = cookieParser();
@@ -16,7 +17,7 @@ server.post('/', deleteSecret);
 
 // add sign-up callback function
 server.get('/sign-up', getSignUp); //html page
-server.post('/sign-up', postSignUp);
+server.post('/sign-up', bodyParser, postSignUp);
 
 // add sign-in callback function
 //server.get('/sign-in', signUIn_callback); //html page
