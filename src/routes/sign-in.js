@@ -6,12 +6,12 @@ const {getUserByEmail} = require('../model/user.js');
 const {userCredentialsForm} = require('../templates/form.js');
 const { createSession } = require('../model/sessions.js');
 
-function get (request,response){
+function getSignin (request,response){
     const body = {userCredentialsForm};
     response.send(body)
 }
 
-function post(request,response){
+function postSignin (request,response){
     const {email, password} = request.body;
     const user = getUserByEmail(email);
     if (!user || !email || !password) {
@@ -34,4 +34,4 @@ function post(request,response){
 }
         
 
-module.exports = {get, post }
+module.exports = {getSignin, postSignin}

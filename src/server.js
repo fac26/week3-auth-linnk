@@ -8,6 +8,7 @@ const cookies = cookieParser(); //process.env.COOKIE_SECRET
 const { getHomePage, deleteSecret } = require('./routes/home');
 const { getSession, removeSession } = require('./model/sessions'); //getSession(sid), removeSession(sid);
 const { getSignUp, postSignUp } = require('./routes/sign-up');
+const { getSignin, postSignin } = require('./routes/sign-in');
 
 server.use(cookies); //pass cookieParser to all reoutes with req object
 server.use(sessions); //calls next inside session()
@@ -20,7 +21,8 @@ server.get('/sign-up', getSignUp); //html page
 server.post('/sign-up', bodyParser, postSignUp);
 
 // add sign-in callback function
-//server.get('/sign-in', signUIn_callback); //html page
+server.get('/sign-in', getSignin);
+server.post('/sign-in', bodyParser, postSignin);
 
 // add log-out callback function
 //server.post('/log-out', logOut_callback);
