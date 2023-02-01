@@ -4,13 +4,13 @@ const db = require("../database/db")
 //the secrets table also accepts the user_id 
 //as it must know who entered it so then later on the same user can delete their posts/secrets
 const add_secret = db.prepare(`
-    INSERT INTO secrets(content, user_id, company_id)
-    VALUES ($content, $user_id, $company_id)
+    INSERT INTO secrets(title, content, user_id, company_id)
+    VALUES ($title, $content, $user_id, $company_id)
     RETURNING id, content, created_at
 `)
 
-function createSecret(content, user_id, company_id) {
-    return add_secret.get({ content, user_id, company_id }); //should give company id
+function createSecret(title, content, user_id, company_id) {
+    return add_secret.get({ title, content, user_id, company_id }); //should give company id
 }
 
 //delete secret from db
@@ -38,6 +38,7 @@ function deleteSecret(secretid) {
 const select_all_secrets = db.prepare(`
     SELECT 
     secrets.id,
+    secrets.title,
     secrets.content,
     secrets.user_id,
     companies.name AS company_name
@@ -54,7 +55,7 @@ console.log(listSecrets())
 
 //select all secrets from 'secrets' table by user_id and return secret id!
 const select_specific_secret = db.prepare(`
-  SELECT id, content
+  SELECT id, title, content
   FROM secrets 
   WHERE user_id = ?
 `);

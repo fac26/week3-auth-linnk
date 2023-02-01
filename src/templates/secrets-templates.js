@@ -7,8 +7,10 @@ function secretsTemplate(secretsFromDB) {
 
 function secretTemplate(secret) {
     const secretLI = /*html*/ `
-    <li class="secret"><p>${secret.content}</p>
+    <li class="secret">
+    <p>${secret.title}</p>
     <p>${secret.company_name}</p>
+    <p>${secret.content}</p>
 </li>
     `;
     return secretLI;
