@@ -24,7 +24,7 @@ function html(title, nav, content) {
 function navBar(session) {
     console.log(session);
     return /*html*/ `<ul>
-    <li><a href='/'>Home</a><div>
+    <li><a href='/'>Home</a>
     <div>
         ${
             session
