@@ -18,6 +18,7 @@ CREATE TABLE IF NOT EXISTS sessions (
 
 CREATE TABLE IF NOT EXISTS secrets (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
+  title TEXT,
   content TEXT,
   user_id INTEGER REFERENCES users(id),
   company_id INTEGER REFERENCES companies(id),
@@ -28,6 +29,5 @@ CREATE TABLE IF NOT EXISTS companies(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL
 );
-
 
 COMMIT;

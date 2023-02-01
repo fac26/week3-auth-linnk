@@ -19,9 +19,9 @@ INSERT INTO companies (id, name) VALUES
 
 ON CONFLICT DO NOTHING;
 
-INSERT INTO secrets (id, content, user_id, company_id, created_at) VALUES
-(1, 'This is big secret about google', 1, 1, '2020-01-22 23:00:00'),
-(2, 'This is big secret about facebook', 4, 3, '2020-01-22 23:00:00') 
+INSERT INTO secrets (id, title, content, user_id, company_id, created_at) VALUES
+(1, 'Big news', 'This is big secret about google', 1, 1, '2020-01-22 23:00:00'),
+(2, 'Facebook are listening', 'This is big secret about facebook', 4, 3, '2020-01-22 23:00:00') 
 
 ON CONFLICT DO NOTHING;
 
