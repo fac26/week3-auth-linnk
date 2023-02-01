@@ -5,11 +5,14 @@
 //post req
 
 const { html, navBar } = require('../templates/html');
+const { secretsTemplate } = require('../templates/secrets-templates');
+const secretsFromDB = require('../model/secrets');
 
 function getHomePage(req, res) {
     const title = 'Corporategirl secrets';
+    const secretsArr = secretsFromDB.listSecrets();
     const nav = navBar(req.session); //we pass on session data
-    const content = `<div>'all secrets'<div>`;
+    const content = secretsTemplate(secretsArr);
     const homePage = html(title, nav, content);
     res.send(homePage);
 }
