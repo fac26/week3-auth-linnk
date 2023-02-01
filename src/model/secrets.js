@@ -51,7 +51,7 @@ function listSecrets(){
 } 
 //.all() returns all the rows of the db
 
-console.log(listSecrets())
+//console.log(listSecrets())
 
 //select all secrets from 'secrets' table by user_id and return secret id!
 const select_specific_secret = db.prepare(`

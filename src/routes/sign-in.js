@@ -2,13 +2,18 @@
 //display form to sign in, display link to home page if a user don't want to proceed with sign-in
 //if an error don't redirect
 const bcrypt = require('bcryptjs');
-const {getUserByEmail} = require('../model/user.js');
-const {userCredentialsForm} = require('../templates/form.js');
+const {getUserByEmail} = require('../model/users.js');
+const {userCredentialsForm} = require('../templates/forms.js');
 const { createSession } = require('../model/sessions.js');
+const { html, navBar } = require('../templates/html');
+
 
 function getSignin (request,response){
-    const body = {userCredentialsForm};
-    response.send(body)
+    const title = 'Sign in';
+    const nav = navBar(request.session);
+    const content = userCredentialsForm();
+    const signInPage = html(title,nav,content);
+    response.send(signInPage)
 }
 
 function postSignin (request,response){

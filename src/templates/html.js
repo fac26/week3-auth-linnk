@@ -22,14 +22,14 @@ function html(title, nav, content) {
 `;
 }
 function navBar(session) {
-    console.log(session);
+    // console.log(session);
     return /*html*/ `<ul>
     <li><a href='/'>Home</a>
     <div>
         ${
             session
                 ? /*html*/ `<li><a href="/add-secret">Add new secret</a></li><li><form method="POST" action="/log-out"><button class="Button">Log out</button></form></li>`
-                : /*html*/ `<li><a href="/sign-up">Sign up</a> or <a href="/log-in">log in</a></li>`
+                : /*html*/ `<li><a href="/sign-up">Sign up</a> or <a href="/sign-in">log in</a></li>`
         }
     </div>
     </ul>`;
