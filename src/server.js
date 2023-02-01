@@ -3,7 +3,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = express.urlencoded({ extended: false });
 
 const server = express();
-const cookies = cookieParser();
+const cookies = cookieParser(); //process.env.COOKIE_SECRET
 
 const { getHomePage, deleteSecret } = require('./routes/home');
 const { getSession, removeSession } = require('./model/sessions'); //getSession(sid), removeSession(sid);
