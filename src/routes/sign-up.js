@@ -4,7 +4,7 @@
 const bcrypt = require('bcryptjs');
 
 const { html } = require('../templates/html');
-const { userCredentialsForm } = require('../templates/forms');
+const { userCredentialsForm, sanitize } = require('../templates/forms');
 const { createUser } = require('../model/users');
 const { createSession } = require('../model/sessions');
 
@@ -20,36 +20,47 @@ function getSignUp(req, res) {
 
 function postSignUp(req, res) {
     let { email, password } = req.body;
-
-    if (!email || !password) {
-        res.status(400).send('Bad input');
-    } else {
-        bcrypt
-            .hash(password, 12)
-            .then((hash) => {
-                email = sanitize(email);
-                const user = createUser(email, hash);
-                const session_id = createSession(user.id); //returns session id
-                res.cookie('sid', session_id, {
-                    signed: true,
-                    maxAge: 1000 * 60 * 60 * 24 * 3, // 3 days
-                    sameSite: 'lax',
-                    httpOnly: true,
-                });
-
-                res.status(200).redirect('/');
-            })
-            .catch((err) =>
-                console.log(
-                    'Error from hashing the password, something went wrong with brypt.hash',
-                    err
-                )
-            );
+    //
+    const errors = {};
+    if (!email.trim()) {
+        errors.email = 'please add your email';
     }
-}
+    if (!password.trim()) {
+        errors.password = 'please enter password';
+    }
 
-function sanitize(input) {
-    return input.replace(/</g, '&lt;');
+    if (Object.keys(errors).length > 0) {
+        const title = 'Create an account';
+        const h1 = /*html*/ `<h1>${title}</h1>`;
+        const nav = /*html*/ `<ul>
+    <li><a href='/'>Home</a><ul>`;
+        const content = userCredentialsForm('/sign-up', errors);
+        const body = html(title, nav, h1.concat(content)); //sort this line out
+
+        return res.send(body);
+    }
+
+    bcrypt
+        .hash(password, 12)
+        .then((hash) => {
+            email = sanitize(email);
+            const user = createUser(email, hash);
+            const session_id = createSession(user.id); //returns session id
+            res.cookie('sid', session_id, {
+                signed: true,
+                maxAge: 1000 * 60 * 60 * 24 * 3, // 3 days
+                sameSite: 'lax',
+                httpOnly: true,
+            });
+
+            res.status(200).redirect('/');
+        })
+        .catch((err) =>
+            console.log(
+                'Error from hashing the password, something went wrong with brypt.hash',
+                err
+            )
+        );
 }
 
 module.exports = { getSignUp, postSignUp };
