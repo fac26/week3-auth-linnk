@@ -10,6 +10,7 @@ const { getSession, removeSession } = require('./model/sessions'); //getSession(
 const { getSignUp, postSignUp } = require('./routes/sign-up');
 const { getSignin, postSignin } = require('./routes/sign-in');
 const { postLogOut } = require('./routes/log-out');
+
 const { addSecretform, handleAddSecret } = require('./routes/add-secret');
 
 server.use(cookies); //pass cookieParser to all reoutes with req object
@@ -19,18 +20,18 @@ server.get('/', getHomePage);
 server.post('/', deleteSecret);
 
 // add sign-up callback function
-server.get('/sign-up', getSignUp); //html page
+server.get('/sign-up', confirmLogin, getSignUp); //html page
 server.post('/sign-up', bodyParser, postSignUp);
 
 // add sign-in callback function
-server.get('/sign-in', getSignin);
+server.get('/sign-in', confirmLogin, getSignin);
 server.post('/sign-in', bodyParser, postSignin);
 
 // add log-out callback function
 server.post('/log-out', postLogOut);
 
 // add secret //if not signed-in this route shouldn't be allowed to see !!!
-server.get('/add-secret', addSecretform);  //html page with form to add new secret
+server.get('/add-secret', confirmLoggedOut, addSecretform);  //html page with form to add new secret
 server.post('/add-secret', bodyParser, handleAddSecret); //callback handles the inputs
 
 // delete
@@ -48,6 +49,23 @@ function sessions(req, res, next) {
         } else {
             req.session = session;
         }
+    }
+    next();
+}
+
+function confirmLogin(req, res, next) {
+    const isLoggedIn = req.session;
+    if (isLoggedIn) {
+        return res.redirect('/');
+    }
+    next();
+}
+
+//middle ware to be added to add-secret route, not yet in main branch
+function confirmLoggedOut(req, res, next) {
+    const isLoggedIn = req.session;
+    if (!isLoggedIn) {
+        res.redirect('/');
     }
     next();
 }
