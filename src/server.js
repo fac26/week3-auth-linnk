@@ -9,7 +9,8 @@ const { getHomePage, deleteSecret } = require('./routes/home');
 const { getSession, removeSession } = require('./model/sessions'); //getSession(sid), removeSession(sid);
 const { getSignUp, postSignUp } = require('./routes/sign-up');
 const { getSignin, postSignin } = require('./routes/sign-in');
-const { postLogOut } = require('./routes/log-out')
+const { postLogOut } = require('./routes/log-out');
+const { addSecretform, handleAddSecret } = require('./routes/add-secret');
 
 server.use(cookies); //pass cookieParser to all reoutes with req object
 server.use(sessions); //calls next inside session()
@@ -29,8 +30,8 @@ server.post('/sign-in', bodyParser, postSignin);
 server.post('/log-out', postLogOut);
 
 // add secret //if not signed-in this route shouldn't be allowed to see !!!
-//server.get('/add-secret', add_callback);  //html page with form to add new secret
-//server.post('/add-secret', add_callback); //callback handles the inputs
+server.get('/add-secret', addSecretform);  //html page with form to add new secret
+server.post('/add-secret', bodyParser, handleAddSecret); //callback handles the inputs
 
 // delete
 //server.post('/delete-secret', delete_callback); //delete_callback should listen to req and in model folder in file should delete post from db
