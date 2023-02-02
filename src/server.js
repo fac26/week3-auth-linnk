@@ -9,7 +9,7 @@ const { getHomePage, deleteSecret } = require('./routes/home');
 const { getSession, removeSession } = require('./model/sessions'); //getSession(sid), removeSession(sid);
 const { getSignUp, postSignUp } = require('./routes/sign-up');
 const { getSignin, postSignin } = require('./routes/sign-in');
-const { postLogOut } = require('./routes/log-out')
+const { postLogOut } = require('./routes/log-out');
 
 server.use(cookies); //pass cookieParser to all reoutes with req object
 server.use(sessions); //calls next inside session()
@@ -18,11 +18,11 @@ server.get('/', getHomePage);
 server.post('/', deleteSecret);
 
 // add sign-up callback function
-server.get('/sign-up', getSignUp); //html page
+server.get('/sign-up', confirmLogin, getSignUp); //html page
 server.post('/sign-up', bodyParser, postSignUp);
 
 // add sign-in callback function
-server.get('/sign-in', getSignin);
+server.get('/sign-in', confirmLogin, getSignin);
 server.post('/sign-in', bodyParser, postSignin);
 
 // add log-out callback function
@@ -47,6 +47,23 @@ function sessions(req, res, next) {
         } else {
             req.session = session;
         }
+    }
+    next();
+}
+
+function confirmLogin(req, res, next) {
+    const isLoggedIn = req.session;
+    if (isLoggedIn) {
+        return res.redirect('/');
+    }
+    next();
+}
+
+//middle ware to be added to add-secret route, not yet in main branch
+function confirmLogOut(req, res, next) {
+    const isLoggedIn = req.session;
+    if (!isLoggedIn) {
+        res.redirect('/');
     }
     next();
 }
