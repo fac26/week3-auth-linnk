@@ -36,14 +36,14 @@ server.post('/log-out', postLogOut);
 //server.post('/delete-secret', delete_callback); //delete_callback should listen to req and in model folder in file should delete post from db
 
 function sessions(req, res, next) {
-    const sid = req.signedCookies.sid; //undefined if there is not a sid
+    const sid = req.signedCookies['group2-sid']; //undefined if there is not a sid
     const session = getSession(sid); //undefined if there is no session
     if (session) {
         const expiry = new Date(session.expires_at);
         const today = new Date();
         if (expiry < today) {
             removeSession(sid);
-            res.clearCookie('sid');
+            res.clearCookie(sid);
         } else {
             req.session = session;
         }

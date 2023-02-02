@@ -27,7 +27,7 @@ function postSignin (request,response){
             return response.status(400).send("<h1>Login Failed</h1>");
         } else {
             const session_id = createSession(user.id);
-        response.cookie("sid", session_id, {
+        response.cookie("group2-sid", session_id, {
             signed:true,
             maxAge: 1000*60*60*24*3,
             sameSite: "lax",

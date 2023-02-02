@@ -30,7 +30,7 @@ function postSignUp(req, res) {
                 email = sanitize(email);
                 const user = createUser(email, hash);
                 const session_id = createSession(user.id); //returns session id
-                res.cookie('sid', session_id, {
+                res.cookie('group2-sid', session_id, {
                     signed: true,
                     maxAge: 1000 * 60 * 60 * 24 * 3, // 3 days
                     sameSite: 'lax',
