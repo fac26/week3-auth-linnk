@@ -1,5 +1,3 @@
+**/node_modules
+**/db.sqlite
 fly.toml
-Dockerfile
-.dockerignore
-node_modules
-.git
