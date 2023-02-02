@@ -12,6 +12,8 @@ function getHomePage(req, res) {
     const title = 'Corporategirl secrets';
     const secretsArr = secretsFromDB.listSecrets();
     const nav = navBar(req.session); //we pass on session data
+    //console.log(secretsArr);
+
     const content = secretsTemplate(secretsArr);
     const homePage = html(title, nav, content);
     res.send(homePage);
