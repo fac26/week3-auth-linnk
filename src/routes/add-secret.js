@@ -45,12 +45,12 @@ function handleAddSecret(req, res) {
         const DBsession = getSession(req.session.id); //{ id: '5ON/HTpizT2wyYzDxt5elJHv', user_id: 7,expires_at: '2023-02-08'}
         //console.log(DBsession, 'add-secret.js, getSession() returns');
 
-        // const secretCreated = createSecret(
-        //     title,
-        //     secret,
-        //     DBsession.user_id,
-        //     companyId.id
-        // );
+        createSecret(
+            title,
+            secret,
+            DBsession.user_id,
+            companyId.id
+        );
         // console.log(secretCreated);
         res.redirect(`/`);
     }
