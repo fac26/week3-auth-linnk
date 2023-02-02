@@ -17,12 +17,13 @@ function html(title, nav, content) {
           ${content}
         </main>
       </div>
+<div class="bg-image"></div>
+</div>
     </body>
   </html>
 `;
 }
 function navBar(session) {
-
     return /*html*/ `<ul>
     <li><a href='/'>Home</a>
     <div>
