@@ -4,7 +4,7 @@
 
 A website named "Corporategirl" where you can read secrets about companies - inspired by gossipgirl, fishbowl and glassdoor. A user can create an account or sign-in to post and delete a secret they know about the company. For example, an employee at facebook could leak that Mark Zuckerberg didn't actually think of Facebook himself, he actually discussed the idea with the Wisconsin brothers (according to the social network).
 
-**PLEASE NOTE: The add secret and delete functions do not currently work...We're working on it!**
+**PLEASE NOTE: The delete function does not currently work...We're working on it!**
 
 ## Setup
 
