@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/fac26/week3-auth-linnk#readme",
   "devDependencies": {
+    "@flydotio/dockerfile": "^0.2.13",
     "eslint": "^8.33.0",
     "nodemon": "^2.0.20",
     "prettier": "2.8.3"
